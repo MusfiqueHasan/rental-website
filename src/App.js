@@ -1,25 +1,42 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
+import Navbar from './components/Navbar'
+import './styles/App.css'
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
+import Home from './components/Home'
+import Marchent from './components/Marchent'
+import User from './components/User'
+import Footer from './components/Footer'
+import MarchentAccount from './components/MarchentAccount'
+import Help from './components/Help'
+import SignUp from './components/SignUp'
 
-function App() {
+
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+  <Router>
+      <div className="App ">
+      <Navbar/>
+
+      
+        <Switch>
+          <Route exact path="/" component={Home}/>
+          <Route exact path="/marchent" component={Marchent}/>
+          <Route exact path="/user" component={User}/>
+          <Route exact path="/marchentuser" component={SignUp}/>
+          <Route exact path="/marchentaccount" component={MarchentAccount}/>
+          <Route exact path="/help" component={Help}/>
+          
+        </Switch>
+        <div className="mt-4 footerSection">
+        <Footer />
+        </div>
+      
     </div>
-  );
+  </Router>
+  )
 }
 
-export default App;
+export default App
+
