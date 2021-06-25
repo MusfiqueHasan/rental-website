@@ -4,7 +4,9 @@ const express = require('express');
 const app = express();
 dotenv.config({path:'./config.env'}); 
 require('./DB/Connection');
-const User =require('./model/UserSchema');
+// const User =require('./model/UserSchema');
+app.use(express.json());
+app.use(require('./router/Auth.js')); 
 
 const PORT = process.env.PORT;
 
@@ -16,9 +18,9 @@ const middleware = (req,res,next)=>{
 }
 
 
-app.get('/', (req,res) =>{
-    res.send(`Hellow World this is home page`);
-});
+// app.get('/', (req,res) =>{
+//     res.send(`Hellow World this is home page from app`);
+// });
 app.get('/about', middleware, (req,res) =>{
     res.send(`Hellow World this is about page`);
 });
