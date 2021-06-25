@@ -1,15 +1,13 @@
+const dotenv = require('dotenv');
 const mongoose = require('mongoose')
 const express = require('express');
 const app = express();
-const DB = 'mongodb+srv://musfique:rentalweb@cluster0.rdfrd.mongodb.net/rental-db?retryWrites=true&w=majority';
-mongoose.connect(DB, {
-    useNewUrlParser:true, useCreateIndex:true, useUnifiedTopology:true, useFindAndModify:false
-    
-}).then( ()=>{
-    console.log(`connection succesful`);
-}).catch((err)=>{
-    console.log(`Error connection`);
-})
+dotenv.config({path:'./config.env'});
+require('./DB/Connection');
+
+
+const PORT = process.env.PORT;
+
 
 
 const middleware = (req,res,next)=>{
@@ -27,6 +25,6 @@ app.get('/about', middleware, (req,res) =>{
 app.get('/contact', (req,res) =>{
     res.send(`Hellow World this is contact page`);
 });
-app.listen(3000, () => {
-    console.log(`Now server is runnig at port 3000`);
+app.listen(PORT, () => {
+    console.log(`Now server is runnig at port ${PORT}`);
 })
