@@ -29,4 +29,4 @@ app.get('/contact', (req,res) =>{
 });
 app.listen(PORT, () => {
     console.log(`Now server is running at port ${PORT}`);
-})
+}) 
