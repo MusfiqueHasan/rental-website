@@ -11,11 +11,16 @@ router.get('/', (req,res) =>{
 
 router.post('/register', async (req, res)=>{
 
-    const { name,email, password, cpassword }=req.body;
-    if( !name ||!email ||! password || !cpassword){
-        return res.status(422).json({error:`fill the required data`});
-    }
+    // const { name,email, password, cpassword }=req.body;
+    // if( !name ||!email ||! password || !cpassword){
+    //     return res.status(422).json({error:`fill the required data`});
+    // }
     try {
+
+        const { name,email, password, cpassword }=req.body;
+        if( !name ||!email ||! password || !cpassword){
+            return res.status(422).json({error:`fill the required data`});
+        }
 
             const userExist = await User.findOne({email:email});
              if(userExist){
@@ -29,8 +34,31 @@ router.post('/register', async (req, res)=>{
     } catch (err) {
         console.log(err) 
     }
-   
-
 });
+
+router.post('/signin', async (req,res)=>{
+
+    try {
+
+        const {email, password} = req.body;
+        if( !email || !password ){
+            return res.status(400).json({error:`fill the required data`});
+        }
+        const userLogin = await User.findOne({email:email});
+
+        if (!userLogin) {
+            res.status(400).json({err:`error login`})
+            
+        } else {
+            res.json({message:`user login successfully`})
+        }
+        
+    } catch (error) {
+        console.log(error)  
+      }
+   
+})
+
+
 
 module.exports = router;
