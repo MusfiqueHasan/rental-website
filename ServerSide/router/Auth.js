@@ -11,25 +11,26 @@ router.get('/', (req,res) =>{
 
 router.post('/register', async (req, res)=>{
 
-    // const { name,email, password, cpassword }=req.body;
-    // if( !name ||!email ||! password || !cpassword){
-    //     return res.status(422).json({error:`fill the required data`});
-    // }
+    const { name,email, password, cpassword }=req.body;
+    if( !name ||!email ||! password || !cpassword){
+        return res.status(422).json({error:`fill the required data`});
+    }
     try {
 
-        const { name,email, password, cpassword }=req.body;
-        if( !name ||!email ||! password || !cpassword){
-            return res.status(422).json({error:`fill the required data`});
-        }
 
             const userExist = await User.findOne({email:email});
              if(userExist){
                  return res.status(422).json({error:`Email already exist `});
-                }
-            const user = new User({ name, email, password, cpassword});
+                }else if (password != cpassword) {
+                    return res.status(422).json({error:`password is not maching `});
+                }else{
+                    const user = new User({ name, email, password, cpassword});
           
-            await user.save();
-            res.status(201).json({message : `User registered sucssesfully`});
+                    await user.save();
+                    res.status(201).json({message : `User registered sucssesfully`});
+
+                }
+          
 
     } catch (err) {
         console.log(err) 
