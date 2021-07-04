@@ -1,25 +1,55 @@
-import React from 'react'
-import signup from '../components/image/signup.svg'
-import { Link } from 'react-router-dom'
+import React, { useState } from 'react';
+import signup from '../components/image/signup.svg';
+import { Link } from 'react-router-dom';
 
 const SignUp = () => {
+
+    const [ user, setUser ] = useState({
+        name: "", email: "", password: "", cpassword: ""
+    });
+    let name, value;
+    const handleInputs = (e) => {
+        console.log(e);
+        name = e.target.name;
+        value = e.target.value;
+
+        setUser({ ...user, [name]: value });
+
+    }
+
     return (
         <div>
             <div className=" marchent d-flex justify-content-center align-items-center">
                 <div className="container marchentCon d-flex justify-content-center  shadow ">
-                    
+
 
                     <div className="secondSection w-50 px-5 mt-5 " >
-                        <form action="">
+                        <form >
                             <h1 className="font-weight-bold text-center"> <span className="text-danger">Sign</span>Up</h1>
                             <div className="form-row">
-                                <input type="text" className="form-control my-3 p-2" placeholder="Username" />
+                                <input type="text" name="name" className="form-control my-3 p-2"
+                                    value={ user.name}
+                                    onChange={handleInputs}
+                                    placeholder="Username" />
                             </div>
                             <div className="form-row">
-                                <input type="email" className="form-control my-3 p-2" placeholder="E-mail" />
+                                <input type="email" name="email" className="form-control my-3 p-2"
+                                    value={ user.email}
+                                    onChange={handleInputs}
+                                    placeholder="E-mail" />
                             </div>
                             <div className="form-row">
-                                <input type="password" className="form-control my-3 p-2" placeholder="Password" />
+                                <input type="password" name="password" className="form-control my-3 p-2"
+                                    value={ user.password}
+                                    onChange={handleInputs}
+                                    placeholder="Password" />
+                            </div>
+                            <div className="form-row">
+                                <input type="cpassword" name="cpassword" className="form-control my-3 p-2"
+                                    value={ user.cpassword}
+                                    onChange={handleInputs}
+
+                                    placeholder="Cpassword" />
                             </div>
                             <div className="form-row">
                                 <Link to="/marchent" className="btn btn-danger btn-lg btn-block my-3 p-2">SignUp</Link>
@@ -43,4 +73,4 @@ const SignUp = () => {
     )
 }
 
-export default SignUp
+export default SignUp;

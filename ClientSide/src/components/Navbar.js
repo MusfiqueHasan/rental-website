@@ -21,50 +21,50 @@ const Navbar = () => {
                             <Link to="/user" className="btn ">
 
                                 User Login
-                    </Link>
+                            </Link>
                             <ReactBootstrap.NavDropdown.Divider />
                             <Link to="/marchent" className="btn" >
                                 Marchent Login
-                </Link>
+                            </Link>
 
                         </ReactBootstrap.NavDropdown>
                         <Link to="/marchentuser" className="btn btn2 " >
                             Sign up
-                </Link>
+                        </Link>
                         <ReactBootstrap.NavDropdown className="btn  " title=" Rental Devison " id="collasible-nav-dropdown">
                             <Link to="/" className="btn ">
 
                                 Dhaka
-                    </Link>
+                            </Link>
                             <ReactBootstrap.NavDropdown.Divider />
-                            <Link to="/" className="btn" >
+                            <Link to="/chittagong" className="btn" >
                                 Chittagong
-                </Link>
+                            </Link>
                             <ReactBootstrap.NavDropdown.Divider />
                             <Link to="/" className="btn" >
                                 Rajshahi
-                </Link>
+                            </Link>
                             <ReactBootstrap.NavDropdown.Divider />
                             <Link to="/" className="btn" >
                                 Sylhet
-                </Link>
+                            </Link>
                             <ReactBootstrap.NavDropdown.Divider />
                             <Link to="/" className="btn" >
                                 Khulna
-                </Link>
+                            </Link>
                             <ReactBootstrap.NavDropdown.Divider />
                             <Link to="/" className="btn" >
                                 Barishal
-                </Link>
+                            </Link>
                             <ReactBootstrap.NavDropdown.Divider />
                             <Link to="/" className="btn" >
                                 Mymensingh
-                </Link>
+                            </Link>
 
                             <ReactBootstrap.NavDropdown.Divider />
                             <Link to="/" className="btn" >
                                 Rangpur
-                </Link>
+                            </Link>
 
                         </ReactBootstrap.NavDropdown>
                     </ReactBootstrap.Nav>

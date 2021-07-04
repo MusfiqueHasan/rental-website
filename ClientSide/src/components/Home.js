@@ -52,7 +52,7 @@ const Home = () => {
     }
     return (
         <>
-            {  !showSearch && (
+            {!showSearch && (
 
                 <div className="home">
                     <div className=" container w-50 h-100 d-flex justify-content-center align-items-center flex-column">
@@ -63,7 +63,7 @@ const Home = () => {
                             <div>
                                 <ReactBootstrap.InputGroup className="mr-2">
                                     <ReactBootstrap.DropdownButton
-                
+
                                         as={InputGroup.Prepend}
                                         title="Rent type"
                                         id="input-group-dropdown-1"

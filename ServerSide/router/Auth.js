@@ -1,6 +1,6 @@
 const express = require('express');
-const bcrypt = require('bcryptjs');
 const router = express.Router();
+const bcrypt = require('bcryptjs');
 require('../DB/Connection');
 const User = require('../model/UserSchema')
 
@@ -50,19 +50,20 @@ router.post('/signin', async (req, res) => {
 
         if (userLogin) {
 
-            const isMach = await bcrypt.compare(password, userLogin.password)
-            if (!isMach) {
-                res.status(400).json({ err: `error login` })
-    
+            const isMatch = await bcrypt.compare(password, userLogin.password);
+            if (isMatch) {
+                res.json({ message: `user login successfully` });
+
             } else {
-                res.json({ message: `user login successfully` })
+               
+                res.status(400).json({ err: `error login 1` });
             }
-            
+
         } else {
-            res.status(400).json({ err: `error login` })
+            res.status(400).json({ err: `error login` });
         }
 
-       
+
 
     } catch (error) {
         console.log(error)
