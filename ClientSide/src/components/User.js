@@ -17,7 +17,7 @@ const User = () => {
 
 
                     <div className="secondSection w-50 px-5  " >
-                        <form action="">
+                        <form method="POST">
                             <h1 className="font-weight-bold text-center"> <span className="text-danger">User</span> Pannel</h1>
                             <div className="form-row">
                                 <input type="email" className="form-control my-3 p-2" placeholder="E-mail" />

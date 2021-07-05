@@ -1,8 +1,36 @@
-import React from 'react'
+import React, {useState} from 'react'
 import login from '../components/image/login.svg'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 
 const Marchent = () => {
+          const history=useHistory();
+        const[email, setEmail]=useState('');
+        const[password, setPassword]=useState('')
+
+        const loginUser = async (e)=>{
+            e.preventDefault();   
+            const res = await fetch("/signin", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                     email, password
+                })
+    
+            });
+            const data = await res.json();
+            if (data.status === 400 || !data) {
+                window.alert(`Invalid Registration`);
+                console.log(`Invalid Registration`);
+    
+            }else {
+                window.alert(`Registration Successful`)
+                console.log(`Registration Successful`);
+                history.push("/")
+            }
+        }
+
     return (
         <div>
             <div className=" marchent d-flex justify-content-center  ">
@@ -17,16 +45,22 @@ const Marchent = () => {
 
 
                     <div className="secondSection w-50 px-5  " >
-                        <form action="">
+                        <form method="POST">
                             <h1 className="font-weight-bold text-center"> <span className="text-danger">Marchent</span> Zone</h1>
                             <div className="form-row">
-                                <input type="email" className="form-control my-3 p-2" placeholder="E-mail" />
+                                <input type="email" className="form-control my-3 p-2" 
+                                value={email}
+                                onChange={(e)=> setEmail(e.target.value)}
+                                placeholder="E-mail" />
                             </div>
                             <div className="form-row">
-                                <input type="password" className="form-control my-3 p-2" placeholder="Password" />
+                                <input type="password" className="form-control my-3 p-2" 
+                                value={password}
+                                onChange={(e)=> setPassword(e.target.value)}
+                                placeholder="Password" />
                             </div>
                             <div className="form-row">
-                                <Link to="/marchentaccount" className="btn btn-danger btn-lg btn-block my-3 p-2"> Login</Link>
+                                <Link  onClick={loginUser} className="btn btn-danger btn-lg btn-block my-3 p-2"> Login</Link>
                             </div>
                             <p className="mt-2">Don't have an account? <Link to="/marchentuser">Register here</Link></p>
 

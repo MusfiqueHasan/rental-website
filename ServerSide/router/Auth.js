@@ -1,8 +1,10 @@
+const jwt = require('jsonwebtoken');
 const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcryptjs');
 require('../DB/Connection');
 const User = require('../model/UserSchema')
+const authentication = require('../middleware/authentication')
 
 
 
@@ -51,11 +53,17 @@ router.post('/signin', async (req, res) => {
         if (userLogin) {
 
             const isMatch = await bcrypt.compare(password, userLogin.password);
+            const token = await userLogin.generateAuthToken();
+            res.cookie("rentalToken", token, {
+                expires: new Date(Date.now() + 25892000000),
+                httpOnly: true
+
+            })
             if (isMatch) {
                 res.json({ message: `user login successfully` });
 
             } else {
-               
+
                 res.status(400).json({ err: `error login 1` });
             }
 
@@ -70,6 +78,10 @@ router.post('/signin', async (req, res) => {
     }
 
 })
+
+router.get('/about', authentication, (req, res) => {
+    res.send(req.rootUser);
+});
 
 
 

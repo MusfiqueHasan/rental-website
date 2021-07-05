@@ -11,6 +11,7 @@ import MarchentAccount from './components/MarchentAccount'
 import Help from './components/Help'
 import SignUp from './components/SignUp'
 import Chittagong from './components/Chittagong'
+import About from './components/About'
 
 
 
@@ -23,12 +24,13 @@ const App = () => {
       
         <Switch>
           <Route exact path="/" component={Home}/>
-          <Route exact path="/signin" component={Marchent}/>
-          <Route exact path="/signin" component={User}/>
+          <Route exact path="/login" component={Marchent}/>
+          <Route exact path="/login" component={User}/>
           <Route exact path="/marchentuser" component={SignUp}/>
           <Route exact path="/marchentaccount" component={MarchentAccount}/>
           <Route exact path="/help" component={Help}/>
           <Route exact path="/chittagong" component={Chittagong}/>
+          <Route exact path="/about" component={About}/>
           
         </Switch>
         <div className="mt-4 footerSection">

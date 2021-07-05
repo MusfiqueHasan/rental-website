@@ -10,20 +10,9 @@ app.use(require('./router/Auth.js'));
 
 const PORT = process.env.PORT;
 
-
-
-const middleware = (req, res, next) => {
-    console.log(`Hellow middleware`);
-    next();
-}
-
-
-// app.get('/', (req,res) =>{
-//     res.send(`Hellow World this is home page from app`);
+// app.get('/about', (req, res) => {
+//     res.send(`Hellow World this is about page`);
 // });
-app.get('/about', middleware, (req, res) => {
-    res.send(`Hellow World this is about page`);
-});
 app.get('/contact', (req, res) => {
     res.send(`Hellow World this is contact page`);
 });

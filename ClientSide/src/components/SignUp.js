@@ -39,7 +39,7 @@ const SignUp = () => {
         }else {
             window.alert(`Registration Successful`)
             console.log(`Registration Successful`);
-            history.push("/signin")
+            history.push("/login")
         }
     }
 

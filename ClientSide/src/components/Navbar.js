@@ -18,18 +18,21 @@ const Navbar = () => {
                         <Link className="btn  btn2 " to="/help">Help</Link>
 
                         <ReactBootstrap.NavDropdown className="btn " title=" Log in" id="collasible-nav-dropdown">
-                            <Link to="/signin" className="btn ">
+                            <Link to="/login" className="btn ">
 
                                 User Login
                             </Link>
                             <ReactBootstrap.NavDropdown.Divider />
-                            <Link to="/signin" className="btn" >
+                            <Link to="/login" className="btn" >
                                 Marchent Login
                             </Link>
 
                         </ReactBootstrap.NavDropdown>
                         <Link to="/marchentuser" className="btn btn2 " >
                             Sign up
+                        </Link>
+                        <Link to="/about" className="btn btn2 " >
+                            About
                         </Link>
                         <ReactBootstrap.NavDropdown className="btn  " title=" Rental Devison " id="collasible-nav-dropdown">
                             <Link to="/" className="btn ">
