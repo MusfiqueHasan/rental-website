@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React, { useState } from 'react'
 import Card from './Card';
 import Map from '../components/image/map1.jpg'
 
@@ -20,8 +20,8 @@ const Chittagong = () => {
 
     return (
         <>
-                   
-                   <h1 className="card-title">Welcome to Chittagong</h1>
+
+            <h1 className="card-title">Welcome to Chittagong</h1>
 
             <form action="" className="d-flex justify-content-lg-center align-items-center flex-row w-100 mt-3 "
                 onSubmit={openNewWindow}
@@ -41,12 +41,12 @@ const Chittagong = () => {
             </form>
 
             <section className="main-card">
-            <div className="card-block">
-                    
+                <div className="card-block">
+
                     {Card.filter(product => product.name.includes(input)).map((item) => {
                         const { image, name, price, description } = item;
                         return (
-        
+
                             <div className="card-sec">
                                 <div className="card">
                                     <div className="imag-sec">
@@ -58,19 +58,19 @@ const Chittagong = () => {
                                         <p>{description}</p>
                                         <a href="#">Booking</a>
                                     </div>
-        
+
                                 </div>
                             </div>
-        
-        
+
+
                         )
                     })}
-                        </div>
+                </div>
                 <div className="card-block2">
-                <img src={Map} alt="" />
+                    <img src={Map} alt="" />
                 </div>
             </section>
-                
+
 
 
         </>
